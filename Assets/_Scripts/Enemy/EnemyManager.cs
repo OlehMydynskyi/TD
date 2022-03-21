@@ -22,7 +22,6 @@ public class EnemyManager : MonoBehaviour
         lvlManager = LVLManager.Instance;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         canvas.transform.rotation = new Quaternion(0, transform.rotation.y * -1, 0, 0);
@@ -50,6 +49,13 @@ public class EnemyManager : MonoBehaviour
             
             
     }
+
+    //temp
+    public float GetHP()
+    {
+        return currentHP;
+    }
+    //temp
 
     IEnumerator Burning(float damage)
     {

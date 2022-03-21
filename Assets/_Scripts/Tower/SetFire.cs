@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SetFire : DamageDealer
+public class SetFire : SingleDD
 {
     [SerializeField] private float fireDamage;
 

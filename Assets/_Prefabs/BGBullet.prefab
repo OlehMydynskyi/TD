@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6152537830626067818}
   - component: {fileID: 274457603646760433}
   - component: {fileID: 6422851336982483113}
-  - component: {fileID: 3210096573560312599}
   - component: {fileID: 1114244772930494100}
+  - component: {fileID: -4258543075770518308}
   m_Layer: 0
   m_Name: BGBullet
   m_TagString: Untagged
@@ -95,26 +95,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3210096573560312599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799128904485516652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f839be19858ac5e41bc0dad4388c3fc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 100
-  damage: 1000
-  damageType: 1
-  radiusOfDamage: 0.1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!96 &1114244772930494100
 TrailRenderer:
   serializedVersion: 2
@@ -212,3 +192,22 @@ TrailRenderer:
   m_MinVertexDistance: 10
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-4258543075770518308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799128904485516652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ffe2dcc0372cb4ab5bd6572b2b3163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 100
+  damage: 100
+  damageType: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256

@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+public abstract class DamageDealer : MonoBehaviour
 {
-    private Collider[] enemy;
     [HideInInspector] public GameObject target;
     [SerializeField] private float speed;
-    [SerializeField] private float damage;
-    [SerializeField] private DamageType damageType;
-    [SerializeField] private float radiusOfDamage;
-    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] protected float damage;
+    [SerializeField] protected DamageType damageType;
+    [SerializeField] protected LayerMask enemyLayer;
     private Vector3 lastTargetPoint;
 
     void Start()
@@ -44,12 +40,5 @@ public class DamageDealer : MonoBehaviour
         }
     }
 
-    protected virtual void TakeDamage(Collider other)
-    {
-        enemy = Physics.OverlapSphere(other.transform.position, radiusOfDamage, enemyLayer);
-        for (int i = 0; i < enemy.Length; i++)
-        {
-            enemy[i].GetComponent<EnemyManager>().GetDamage(damage, damageType);
-        }
-    }
+    protected virtual void TakeDamage(Collider other) {}
 }

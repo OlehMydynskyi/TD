@@ -5,46 +5,32 @@ using UnityEngine.AI;
 
 public class WavesManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] enemy; 
-    [SerializeField] private int[] countOfEnemies;
-    [SerializeField] private float[] interval;
+    [SerializeField] private Wave[] waves;
     private bool working = false;
-    private int numberOfWaves = 0;
-    private bool permit = true;
+    private int numberOfWave = 0;
     [HideInInspector] public bool started;
     [HideInInspector] public bool endWork = false;
 
-    void Start()
-    {
-        if (enemy.Length != interval.Length && enemy.Length != countOfEnemies.Length)
-        {
-            Debug.Log("Lengths of arrays must be the same.");
-            permit = false;
-        }
-    }
-
     private void FixedUpdate()
     {
-        if (!permit || !started)
-            return;
 
-        if (numberOfWaves >= enemy.Length)
+        if (numberOfWave >= waves.Length)
         {
             endWork = true;
             return;
         }            
-        else if (!working && countOfEnemies[numberOfWaves] > 0)
+        else if (!working && waves[numberOfWave].countOfEnemies > 0)
             StartCoroutine("Spawn");
-        else if (countOfEnemies[numberOfWaves] <= 0)
-            numberOfWaves++;
+        else if (waves[numberOfWave].countOfEnemies <= 0)
+            numberOfWave++;
     }
 
     IEnumerator Spawn()
     {
         working = true;
-        Instantiate(enemy[numberOfWaves], gameObject.transform.position, Quaternion.identity); 
-        countOfEnemies[numberOfWaves]--;
-        yield return new WaitForSeconds(interval[numberOfWaves]);
+        Instantiate(waves[numberOfWave].enemyPrefab, gameObject.transform.position, Quaternion.identity);
+        waves[numberOfWave].countOfEnemies--;
+        yield return new WaitForSeconds(waves[numberOfWave].interval);
         working = false;
     }
 }
