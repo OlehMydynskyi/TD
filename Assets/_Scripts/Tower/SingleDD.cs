@@ -7,6 +7,5 @@ public class SingleDD : DamageDealer
     {
         base.TakeDamage(other);
         other.GetComponent<EnemyManager>().GetDamage(damage, damageType);
-        Debug.Log("D: " + damage);
     }
 }

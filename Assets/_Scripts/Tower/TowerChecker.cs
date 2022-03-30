@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TowerChecker : MonoBehaviour
 {
@@ -21,10 +19,14 @@ public class TowerChecker : MonoBehaviour
             currentTarget = Physics.OverlapSphere(transform.position, radiusOfVisibility, enemies)[0].gameObject;
             towerManager.ChangeTarget(currentTarget);
         }
-        else if (currentTarget != null && Vector3.Distance(transform.position, currentTarget.transform.position) > radiusOfVisibility)
+        else if (currentTarget != null)
         {
-            currentTarget = null;
-            towerManager.ChangeTarget(currentTarget);
+            if(currentTarget.activeInHierarchy == false || Vector3.Distance(transform.position, currentTarget.transform.position) > radiusOfVisibility)
+            {
+                //Debug.Log("Set null");
+                currentTarget = null;
+                towerManager.ChangeTarget(currentTarget);
+            }   
         }
     }
     

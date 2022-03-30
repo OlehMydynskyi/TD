@@ -4,18 +4,21 @@ using UnityEngine;
 
 namespace Object_Pooling
 {
-    class ObjectPool
+    class ObjectPool : MonoBehaviour
     {
-        private readonly Dictionary<IPoolable, PoolTask> activePoolTask;
-        public readonly Transform objectPoolTransform;
+        private Dictionary<IPoolable, PoolTask> activePoolTask;
+        public Transform objectPoolTransform;
+        public static ObjectPool Instance;
 
-        private static ObjectPool instance;
-        public static ObjectPool Instance => instance ?? new ObjectPool();
-        private ObjectPool()
+        private void Awake()
         {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+
+            objectPoolTransform = gameObject.transform;
             activePoolTask = new Dictionary<IPoolable, PoolTask>();
-            objectPoolTransform = new GameObject().transform;
-            objectPoolTransform.name = "ObjectPool";
         }
 
         public T GetObject<T>(T prefab) where T : MonoBehaviour, IPoolable
