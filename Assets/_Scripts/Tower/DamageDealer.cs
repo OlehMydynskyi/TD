@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using Object_Pooling;
+using System;
 
-public abstract class DamageDealer : MonoBehaviour
+public abstract class DamageDealer : MonoBehaviour, IPoolable
 {
     [HideInInspector] public GameObject target;
     [SerializeField] private float speed;
@@ -8,6 +10,15 @@ public abstract class DamageDealer : MonoBehaviour
     [SerializeField] protected DamageType damageType;
     [SerializeField] protected LayerMask enemyLayer;
     private Vector3 lastTargetPoint;
+
+    public event Action<IPoolable> OnReturnToPool;
+    public Transform Transform => transform;
+    public GameObject GameObject => gameObject;
+    public void ReturnToPool()
+    {
+        OnReturnToPool?.Invoke(this);
+    }
+
 
     void Start()
     {
@@ -35,8 +46,8 @@ public abstract class DamageDealer : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            TakeDamage(other);     
-            Destroy(gameObject);
+            TakeDamage(other);
+            ReturnToPool();
         }
     }
 

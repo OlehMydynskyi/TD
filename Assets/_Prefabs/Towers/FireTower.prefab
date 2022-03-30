@@ -366,7 +366,7 @@ MonoBehaviour:
   head: {fileID: 147993431057545138}
   shootPoint: {fileID: 3700212608186380649}
   delay: 2
-  bullet: {fileID: 8418344959156695066, guid: 6f78da9875f32e24dbc72c80cb59c0c0, type: 3}
+  bullet: {fileID: 5494477065863116745, guid: 6f78da9875f32e24dbc72c80cb59c0c0, type: 3}
   cost: 55
 --- !u!1 &4296069603051958731
 GameObject:

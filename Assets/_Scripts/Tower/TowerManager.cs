@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Object_Pooling;
 
 public class TowerManager : MonoBehaviour
 {
@@ -9,13 +9,14 @@ public class TowerManager : MonoBehaviour
 
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float delay;
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private DamageDealer bullet;
     private bool isShooting = false;
     [SerializeField] public int cost;
+    private ObjectPool objectPool;
   
     void Start()
     {
-        //defaultHeadPosition = head.transform;
+        objectPool = ObjectPool.Instance;
     }
 
     private void FixedUpdate()
@@ -40,8 +41,9 @@ public class TowerManager : MonoBehaviour
     IEnumerator Shoot ()
     {
         isShooting = true;
-        GameObject shoot = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-        shoot.GetComponent<DamageDealer>().target = currentTarget;
+        DamageDealer shoot = objectPool.GetObject(bullet.GetComponent<DamageDealer>());
+        shoot.gameObject.transform.position = shootPoint.position;
+        shoot.target = currentTarget;
         yield return new WaitForSeconds(delay);
         isShooting = false;
     }

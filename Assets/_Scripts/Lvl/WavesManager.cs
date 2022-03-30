@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using Object_Pooling;
 
 public class WavesManager : MonoBehaviour
 {
@@ -10,6 +9,12 @@ public class WavesManager : MonoBehaviour
     private int numberOfWave = 0;
     [HideInInspector] public bool started;
     [HideInInspector] public bool endWork = false;
+    private ObjectPool objectPool;
+
+    private void Start()
+    {
+        objectPool = ObjectPool.Instance;
+    }
 
     private void FixedUpdate()
     {
@@ -24,11 +29,11 @@ public class WavesManager : MonoBehaviour
         else if (waves[numberOfWave].countOfEnemies <= 0)
             numberOfWave++;
     }
-
+        
     IEnumerator Spawn()
     {
         working = true;
-        Instantiate(waves[numberOfWave].enemyPrefab, gameObject.transform.position, Quaternion.identity);
+        objectPool.GetObject(waves[numberOfWave].enemyPrefab).transform.position = transform.position;
         waves[numberOfWave].countOfEnemies--;
         yield return new WaitForSeconds(waves[numberOfWave].interval);
         working = false;

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Object_Pooling;
+using System;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour, IPoolable
 {
     [SerializeField] private float maxHP;
     private float currentHP;
@@ -13,6 +14,15 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Slider hpSlider;
     [SerializeField] private int revard;
     private LVLManager lvlManager;
+
+    public Transform Transform => transform;
+    public GameObject GameObject => gameObject;
+    public event Action<IPoolable> OnReturnToPool;
+    public void ReturnToPool()
+    {
+        OnReturnToPool?.Invoke(this);
+    }
+
 
     void Start()
     {
@@ -38,24 +48,21 @@ public class EnemyManager : MonoBehaviour
                 currentHP -= damage * fireDamageMultiplayer;
                 break;
         }
+
         hpSlider.value = currentHP;
-        //Debug.Log("HP: " + currentHP);
+
         if (currentHP <= 0)
-        {
-            StopCoroutine("Burning");
-            lvlManager.ChangeCoins(revard);
-            Destroy(gameObject);
-        }
-            
-            
+            OnDeath(); 
     }
 
-    //temp
-    public float GetHP()
+    public void OnDeath ()
     {
-        return currentHP;
+        StopCoroutine("Burning");
+        lvlManager.ChangeCoins(revard);
+        ReturnToPool();
+        currentHP = maxHP;
+        hpSlider.value = maxHP;
     }
-    //temp
 
     IEnumerator Burning(float damage)
     {

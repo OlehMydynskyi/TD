@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DeathBox : MonoBehaviour
 {   
@@ -8,7 +6,7 @@ public class DeathBox : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyManager>().GetDamage(10000000000, DamageType.Physical);
+            other.gameObject.GetComponent<EnemyManager>().OnDeath();
         }
     }
 }

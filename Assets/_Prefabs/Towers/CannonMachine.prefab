@@ -14616,7 +14616,7 @@ MonoBehaviour:
   head: {fileID: 2248024518288033804}
   shootPoint: {fileID: 1135280839821141037}
   delay: 1
-  bullet: {fileID: 8418344959156695066, guid: 7d056e5e9f1ed234f8797dc90f890736, type: 3}
+  bullet: {fileID: 7385449194506558191, guid: 7d056e5e9f1ed234f8797dc90f890736, type: 3}
   cost: 55
 --- !u!114 &3046016742402804296
 MonoBehaviour:
