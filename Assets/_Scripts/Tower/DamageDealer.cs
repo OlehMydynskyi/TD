@@ -27,7 +27,7 @@ public abstract class DamageDealer : MonoBehaviour, IPoolable
 
     void FixedUpdate()
     {
-        if (target != null)
+        if (target != null && target.activeInHierarchy == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
             lastTargetPoint = target.transform.position;
@@ -36,8 +36,9 @@ public abstract class DamageDealer : MonoBehaviour, IPoolable
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, lastTargetPoint, Time.deltaTime * speed);
+            transform.LookAt(lastTargetPoint);
             if (Vector3.Distance(transform.position, lastTargetPoint) < 0.5f)
-                Destroy(gameObject);
+                ReturnToPool();
         }
             
     }

@@ -21,7 +21,7 @@ public class TowerChecker : MonoBehaviour
         }
         else if (currentTarget != null)
         {
-            if(currentTarget.activeInHierarchy == false || Vector3.Distance(transform.position, currentTarget.transform.position) > radiusOfVisibility)
+            if(Vector3.Distance(transform.position, currentTarget.transform.position) > radiusOfVisibility || currentTarget.activeInHierarchy == false)
             {
                 //Debug.Log("Set null");
                 currentTarget = null;

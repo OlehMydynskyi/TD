@@ -21,7 +21,7 @@ public class TowerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentTarget != null)
+        if (currentTarget != null && currentTarget.activeInHierarchy == true)
         {
             head.transform.LookAt(currentTarget.transform);
             if (!isShooting)
@@ -33,9 +33,6 @@ public class TowerManager : MonoBehaviour
     public void ChangeTarget(GameObject target)
     {
         currentTarget = target;
-
-        /*if (currentTarget == null)
-            head.transform.rotation = new Quaternion();*/
     }
 
     IEnumerator Shoot ()

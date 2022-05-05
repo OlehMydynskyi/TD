@@ -36,6 +36,7 @@ namespace Object_Pooling
         {
             freeObjects.Add(poolObject);
             poolObject.GameObject.SetActive(false);
+            poolObject.GameObject.transform.position = new Vector3(0, 0, 0);
             poolObject.Transform.SetParent(container);
             poolObject.OnReturnToPool -= ReturnToPool;
         }

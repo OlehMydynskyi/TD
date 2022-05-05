@@ -6,18 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: e40a92ec8780cdc43879525c04187fff
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/MainMenu.unity
+    guid: 52ec9ce582990433ba91d25f0b8a58c0
   - enabled: 1
-    path: Assets/Scenes/1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/Levels/Level1/Level1.unity
+    guid: 41171dfb75d104e408c9563c2b91e030
   - enabled: 1
-    path: Assets/Scenes/2.unity
-    guid: cd20e2c57728a7647a62bb142c3fabb2
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/Levels/Level2/Level2.unity
+    guid: f1f1e0e236a174f65bd47b4b7651d94b
   - enabled: 1
-    path: Assets/Scenes/3.unity
-    guid: b1fbb4bf8c45a814297a2f8267c5ca68
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/Levels/Level3/Level3.unity
+    guid: 5a958d11acaa34c4a9dff40362183e28
   - enabled: 1
-    path: Assets/Scenes/4.unity
-    guid: 179d49f1be49dd14ca0753a3cd47b528
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/Levels/Level4/Level4.unity
+    guid: 62bfb8808bad14fdfa68f0e514c68d0c
+  - enabled: 1
+    path: Assets/UnityTechnologies/TowerDefenseTemplate/Scenes/Levels/Level5/Level5.unity
+    guid: fc4839b9a8d054242a87070a88f6b35c
   m_configObjects: {}
