@@ -310,7 +310,7 @@ MonoBehaviour:
   radiusOfVisibility: 5
   enemies:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!114 &6672181241549648297
 MonoBehaviour:
   m_ObjectHideFlags: 0

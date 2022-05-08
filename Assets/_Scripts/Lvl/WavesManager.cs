@@ -33,7 +33,7 @@ public class WavesManager : MonoBehaviour
     IEnumerator Spawn()
     {
         working = true;
-        objectPool.GetObject(waves[numberOfWave].enemyPrefab).transform.position = transform.position;
+        objectPool.GetObject(waves[numberOfWave].enemyPrefab).GetComponent<EnemyManager>().OnSpawn(transform, waves[numberOfWave].enemyHP);
         waves[numberOfWave].countOfEnemies--;
         yield return new WaitForSeconds(waves[numberOfWave].interval);
         working = false;

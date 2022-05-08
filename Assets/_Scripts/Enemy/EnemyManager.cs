@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using Object_Pooling;
 using System;
 
 public class EnemyManager : MonoBehaviour, IPoolable
 {
-    [SerializeField] private float maxHP;
     private float currentHP;
     [SerializeField] private float physicalDamageMultiplayer = 1;
     [SerializeField] private float fireDamageMultiplayer = 1;
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private Slider hpSlider;
     [SerializeField] private int revard;
     private LVLManager lvlManager;
+
+    public float CurrentHP { get => currentHP; }
 
     public Transform Transform => transform;
     public GameObject GameObject => gameObject;
@@ -26,15 +24,13 @@ public class EnemyManager : MonoBehaviour, IPoolable
 
     void Start()
     {
-        currentHP = maxHP;
-        hpSlider.maxValue = maxHP;
-        hpSlider.value = maxHP;
         lvlManager = LVLManager.Instance;
     }
 
-    void FixedUpdate()
+    public void OnSpawn (Transform spownPoint, float HP)
     {
-        canvas.transform.rotation = new Quaternion(0, transform.rotation.y * -1, 0, 0);
+        transform.position = spownPoint.position;
+        ChangeHP(HP);
     }
 
     public void GetDamage (float damage, DamageType damageType)
@@ -42,26 +38,33 @@ public class EnemyManager : MonoBehaviour, IPoolable
         switch (damageType)
         {
             case DamageType.Physical:
-                currentHP -= damage * physicalDamageMultiplayer;
+                ChangeHP(currentHP - damage * physicalDamageMultiplayer);
                 break;
             case DamageType.Fire:
-                currentHP -= damage * fireDamageMultiplayer;
+                ChangeHP(currentHP - damage * fireDamageMultiplayer);
                 break;
         }
 
-        hpSlider.value = currentHP;
+         
+    }
 
+    private void ChangeHP(float HP)
+    {
+        currentHP = HP;
         if (currentHP <= 0)
-            OnDeath(); 
+        {
+            OnDeath();
+            return;
+        }  
+        float scale = HP / 100;
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
     public void OnDeath ()
     {
         StopCoroutine("Burning");
-        lvlManager.ChangeCoins(revard);
+        //lvlManager.ChangeCoins(revard);
         ReturnToPool();
-        currentHP = maxHP;
-        hpSlider.value = maxHP;
     }
 
     IEnumerator Burning(float damage)

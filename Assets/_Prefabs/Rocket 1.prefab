@@ -61,11 +61,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 10
-  damage: 10
+  damage: 30
   damageType: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   radiusOfDamage: 10
 --- !u!1 &2218743912821492779
 GameObject:

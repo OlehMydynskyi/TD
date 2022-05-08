@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7221809311629619298}
   - component: {fileID: 633987598}
   - component: {fileID: 633987599}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   slider: {fileID: 9191676494026257157}
+  loseUI: {fileID: 0}
 --- !u!1001 &4669260485951923880
 PrefabInstance:
   m_ObjectHideFlags: 0

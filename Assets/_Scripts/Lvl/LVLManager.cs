@@ -20,13 +20,13 @@ public class LVLManager : MonoBehaviour
     [SerializeField] private WavesManager[] wavesManager;
     private bool lvlEnded = false;
     [SerializeField] public int coins;
-    [SerializeField] private GameObject coinsText;
-    [SerializeField] private GameObject completeUI;
+    /*[SerializeField] private GameObject coinsText;
+    [SerializeField] private GameObject completeUI;*/
 
     void Start()
     {
         StartCoroutine("StartWavesManager");
-        coinsText.GetComponent<TMP_Text>().text = coins.ToString();
+        //coinsText.GetComponent<TMP_Text>().text = coins.ToString();
     }
 
 
@@ -61,7 +61,7 @@ public class LVLManager : MonoBehaviour
     private void EndLvl()
     {
         Debug.Log("End");
-        completeUI.SetActive(true);
+        //completeUI.SetActive(true);
         lvlEnded = true;
     }
 
@@ -73,7 +73,7 @@ public class LVLManager : MonoBehaviour
     public void ChangeCoins(int value)
     {
         coins += value;
-        coinsText.GetComponent<TMP_Text>().text = coins.ToString();
+        //coinsText.GetComponent<TMP_Text>().text = coins.ToString();
     }
 
     private void OnDrawGizmos()
