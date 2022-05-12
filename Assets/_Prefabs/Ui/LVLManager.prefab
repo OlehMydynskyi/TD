@@ -52,3 +52,4 @@ MonoBehaviour:
   - {fileID: 0}
   coins: 110
   coinsText: {fileID: 0}
+  completeUI: {fileID: 0}

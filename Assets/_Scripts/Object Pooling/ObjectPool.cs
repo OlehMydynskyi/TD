@@ -7,7 +7,7 @@ namespace Object_Pooling
     class ObjectPool : MonoBehaviour
     {
         private Dictionary<IPoolable, PoolTask> activePoolTask;
-        public Transform objectPoolTransform;
+        [HideInInspector] public Transform objectPoolTransform;
         public static ObjectPool Instance;
 
         private void Awake()
@@ -41,4 +41,3 @@ namespace Object_Pooling
         }
     }
 }
-

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
@@ -24,12 +22,7 @@ public class PlatformManager : MonoBehaviour
     public void ChooseTower (Towers tower)
     {
         if (towers[(int)tower].GetComponent<TowerManager>().cost > lvlManager.coins || isPlaced)
-        {
-            Debug.Log("Cost: " + (towers[(int)tower].GetComponent<TowerManager>().cost > lvlManager.coins));
-            Debug.Log("Cost: " + (towers[(int)tower].GetComponent<TowerManager>().cost));
-            Debug.Log("Plased: " + isPlaced);
             return;
-        }
 
         currentTower = GameObject.Instantiate(towers[(int)tower], gameObject.transform.position + d, Quaternion.identity);
         lvlManager.ChangeCoins(-towers[(int)tower].GetComponent<TowerManager>().cost);

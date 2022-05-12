@@ -80,4 +80,3 @@ public enum DamageType
     Physical = 1,
     Fire = 2,
 }
-

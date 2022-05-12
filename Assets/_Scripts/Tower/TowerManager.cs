@@ -38,9 +38,7 @@ public class TowerManager : MonoBehaviour
     IEnumerator Shoot ()
     {
         isShooting = true;
-        DamageDealer shoot = objectPool.GetObject(bullet.GetComponent<DamageDealer>());
-        shoot.gameObject.transform.position = shootPoint.position;
-        shoot.target = currentTarget;
+        objectPool.GetObject(bullet.GetComponent<DamageDealer>()).OnSpawn(shootPoint, currentTarget);
         yield return new WaitForSeconds(delay);
         isShooting = false;
     }

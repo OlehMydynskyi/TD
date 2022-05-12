@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73134b8c03ef1ec499da0288f41e5878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiusOfVisibility: 10.41
+  radiusOfVisibility: 8
   enemies:
     serializedVersion: 2
     m_Bits: 256
